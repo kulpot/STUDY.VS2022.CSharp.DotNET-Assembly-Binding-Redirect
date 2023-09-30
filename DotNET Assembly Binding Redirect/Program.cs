@@ -1592,6 +1592,147 @@ C:\Users\sunny\source\repos\DotNET Assembly Binding Redirect\DotNET Assembly Bin
                5 File(s)         69,001 bytes
                5 Dir(s)  487,096,741,888 bytes free
 
+-----------CREATE------------------------------
+[assembly: AssemblyVersion("1.0.0.0")]
+
+public class Cow
+{
+    public static void Moo()
+    {
+        Console.WriteLine("Moooooooooooooing version 1");
+    }
+}
+
+//class MainClass
+//{
+//    static void Main()
+//    {
+//        Cow.Moo();
+//    }
+//}
+-----------------------------------------------
+C:\Users\sunny\source\repos\DotNET Assembly Binding Redirect\DotNET Assembly Binding Redirect>csc /t:library /out:Farm.dll /keyfile:KulpotKey.snk Program.cs
+Microsoft (R) Visual C# Compiler version 4.7.0-3.23416.8 (43b0b05c)
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+
+C:\Users\sunny\source\repos\DotNET Assembly Binding Redirect\DotNET Assembly Binding Redirect>dir
+ Volume in drive C has no label.
+ Volume Serial Number is DAE4-938D
+
+ Directory of C:\Users\sunny\source\repos\DotNET Assembly Binding Redirect\DotNET Assembly Binding Redirect
+
+01/10/2023  06:50 am    <DIR>          .
+01/10/2023  06:50 am    <DIR>          ..
+01/10/2023  06:41 am               189 App.config
+01/10/2023  06:41 am    <DIR>          bin
+01/10/2023  06:41 am             2,414 DotNET Assembly Binding Redirect.csproj
+01/10/2023  06:50 am             4,096 Farm.dll
+01/10/2023  06:47 am               596 KulpotKey.snk
+01/10/2023  06:41 am    <DIR>          obj
+01/10/2023  06:49 am            67,133 Program.cs
+30/09/2023  07:27 am               229 Program.exe.config
+01/10/2023  06:44 am    <DIR>          Properties
+               6 File(s)         74,657 bytes
+               5 Dir(s)  487,093,694,464 bytes free
+
+-------------CREATE------V1 SNK----------------------
+//[assembly: AssemblyVersion("1.0.0.0")]
+
+//public class Cow
+//{
+//    public static void Moo()
+//    {
+//        Console.WriteLine("Moooooooooooooing version 1");
+//    }
+//}
+
+class MainClass
+{
+    static void Main()
+    {
+        Cow.Moo();
+    }
+}
+-------------------------------------------------
+C:\Users\sunny\source\repos\DotNET Assembly Binding Redirect\DotNET Assembly Binding Redirect>csc /r:Farm.dll Program.cs
+Microsoft (R) Visual C# Compiler version 4.7.0-3.23416.8 (43b0b05c)
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+
+C:\Users\sunny\source\repos\DotNET Assembly Binding Redirect\DotNET Assembly Binding Redirect>dir
+ Volume in drive C has no label.
+ Volume Serial Number is DAE4-938D
+
+ Directory of C:\Users\sunny\source\repos\DotNET Assembly Binding Redirect\DotNET Assembly Binding Redirect
+
+01/10/2023  06:51 am    <DIR>          .
+01/10/2023  06:51 am    <DIR>          ..
+01/10/2023  06:41 am               189 App.config
+01/10/2023  06:41 am    <DIR>          bin
+01/10/2023  06:41 am             2,414 DotNET Assembly Binding Redirect.csproj
+01/10/2023  06:50 am             4,096 Farm.dll  <------------Version 1 with key ref to Program.exe
+01/10/2023  06:47 am               596 KulpotKey.snk
+01/10/2023  06:41 am    <DIR>          obj
+01/10/2023  06:51 am            68,745 Program.cs
+01/10/2023  06:51 am             4,096 Program.exe
+30/09/2023  07:27 am               229 Program.exe.config
+01/10/2023  06:44 am    <DIR>          Properties
+               7 File(s)         80,365 bytes
+               5 Dir(s)  487,091,953,664 bytes free
+
+------------CREATE------V2 SNK---------------------
+[assembly: AssemblyVersion("2.0.0.0")]
+
+public class Cow
+{
+    public static void Moo()
+    {
+        Console.WriteLine("Moooooooooooooing version 2");
+    }
+}
+
+//class MainClass
+//{
+//    static void Main()
+//    {
+//        Cow.Moo();
+//    }
+//}
+----------------------------------------------
+
+C:\Users\sunny\source\repos\DotNET Assembly Binding Redirect\DotNET Assembly Binding Redirect>csc /t:library /out:Farm.dll /keyfile:KulpotKey.snk Program.cs
+Microsoft (R) Visual C# Compiler version 4.7.0-3.23416.8 (43b0b05c)
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+
+C:\Users\sunny\source\repos\DotNET Assembly Binding Redirect\DotNET Assembly Binding Redirect>dir
+ Volume in drive C has no label.
+ Volume Serial Number is DAE4-938D
+
+ Directory of C:\Users\sunny\source\repos\DotNET Assembly Binding Redirect\DotNET Assembly Binding Redirect
+
+01/10/2023  06:53 am    <DIR>          .
+01/10/2023  06:53 am    <DIR>          ..
+01/10/2023  06:41 am               189 App.config
+01/10/2023  06:41 am    <DIR>          bin
+01/10/2023  06:41 am             2,414 DotNET Assembly Binding Redirect.csproj
+01/10/2023  06:54 am             4,096 Farm.dll <-------------Version 2 with key ref to Program.exe
+01/10/2023  06:47 am               596 KulpotKey.snk
+01/10/2023  06:41 am    <DIR>          obj
+01/10/2023  06:53 am            70,055 Program.cs
+01/10/2023  06:51 am             4,096 Program.exe
+30/09/2023  07:27 am               229 Program.exe.config
+01/10/2023  06:44 am    <DIR>          Properties
+               7 File(s)         81,675 bytes
+               5 Dir(s)  487,087,583,232 bytes free
+
+C:\Users\sunny\source\repos\DotNET Assembly Binding Redirect\DotNET Assembly Binding Redirect>Program.exe
+
+Unhandled Exception: System.IO.FileLoadException: Could not load file or assembly 'Farm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a73e3e0bc1fb156b' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+   at MainClass.Main()
+
+
 
 
 
@@ -1601,13 +1742,13 @@ C:\Users\sunny\source\repos\DotNET Assembly Binding Redirect\DotNET Assembly Bin
  */
 
 
-[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyVersion("2.0.0.0")]
 
 public class Cow
 {
     public static void Moo()
     {
-        Console.WriteLine("Moooooooooooooing version 1");
+        Console.WriteLine("Moooooooooooooing version 2");
     }
 }
 

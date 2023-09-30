@@ -1728,9 +1728,53 @@ C:\Users\sunny\source\repos\DotNET Assembly Binding Redirect\DotNET Assembly Bin
                5 Dir(s)  487,087,583,232 bytes free
 
 C:\Users\sunny\source\repos\DotNET Assembly Binding Redirect\DotNET Assembly Binding Redirect>Program.exe
-
-Unhandled Exception: System.IO.FileLoadException: Could not load file or assembly 'Farm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a73e3e0bc1fb156b' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)
+------ERROR looking for version 1-------------
+Unhandled Exception: System.IO.FileLoadException: Could not load file or assembly 'Farm, 
+Version=1.0.0.0, Culture=neutral, 
+PublicKeyToken=a73e3e0bc1fb156b' or one of its dependencies. 
+The located assembly's manifest definition does not match the assembly reference. 
+(Exception from HRESULT: 0x80131040)
    at MainClass.Main()
+
+----------Create Program.exe.config-----add new item -> App config file------------
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<runtime>
+		<assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+			<dependentAssembly>
+				<assemblyIdentity name="Farm"
+								  publicKeyToken="a73e3e0bc1fb156b" />
+				<bindingRedirect oldVersion="1.0.0.0" 
+								 newVersion="2.0.0.0" />
+			</dependentAssembly>
+		</assemblyBinding>
+	</runtime>
+</configuration>
+-----------------------------------------------------
+C:\Users\sunny\source\repos\DotNET Assembly Binding Redirect\DotNET Assembly Binding Redirect>dir
+ Volume in drive C has no label.
+ Volume Serial Number is DAE4-938D
+
+ Directory of C:\Users\sunny\source\repos\DotNET Assembly Binding Redirect\DotNET Assembly Binding Redirect
+
+01/10/2023  06:53 am    <DIR>          .
+01/10/2023  06:53 am    <DIR>          ..
+01/10/2023  06:41 am               189 App.config
+01/10/2023  06:41 am    <DIR>          bin
+01/10/2023  06:41 am             2,414 DotNET Assembly Binding Redirect.csproj
+01/10/2023  06:54 am             4,096 Farm.dll <-------------Version 2 with key ref to Program.exe
+01/10/2023  06:47 am               596 KulpotKey.snk
+01/10/2023  06:41 am    <DIR>          obj
+01/10/2023  06:53 am            70,055 Program.cs
+01/10/2023  06:51 am             4,096 Program.exe
+30/09/2023  07:27 am               229 Program.exe.config <--------------Edited/Updated 
+01/10/2023  06:44 am    <DIR>          Properties
+               7 File(s)         81,675 bytes
+               5 Dir(s)  487,087,583,232 bytes free
+
+
+C:\Users\sunny\source\repos\DotNET Assembly Binding Redirect\DotNET Assembly Binding Redirect>Program.exe
+Moooooooooooooing version 2
 
 
 
